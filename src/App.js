@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import axios from "axios";
+import LocationInfo from "./components/LocationInfo";
+import PostalCodeForm from "./components/PostalCodeForm";
+import "./App.css";
 function App() {
+  const [locationInfo, setLocationInfo] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  
+
+  const handleSearch = (postalCode) => {
+    setError(null);
+    setLoading(true);
+    if (postalCode) {
+      axios
+        .get(`https://api.zippopotam.us/IN/${postalCode}`)
+        .then((response) => {
+          setLocationInfo(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setLocationInfo(null);
+          if (error?.response?.status === 404) {
+            setError("No location found for this postal code.");
+          } else {
+            setError("Something went wrong. Please try again later.");
+          }
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+      setLocationInfo(null);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Zip Code Information App</h1>
+      <PostalCodeForm onSubmit={handleSearch} />
+      {loading && <p className="loading">Loading...</p>}
+      {error && <p className="error">{error}</p>}
+      {locationInfo && <LocationInfo location={locationInfo} />}
     </div>
   );
 }
