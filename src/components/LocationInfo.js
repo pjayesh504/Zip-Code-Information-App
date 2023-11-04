@@ -1,7 +1,7 @@
 function LocationInfo(props) {
     return (
         <div className="location-info">
-            <h2>Location Information</h2>
+            <h2 className="heading">Location Information</h2>
             {props.location.places.map((loc, index) => {
                 return (
                     <div key={index} className="grid-info">

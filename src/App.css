@@ -3,7 +3,7 @@
   font-family: Arial, Helvetica, sans-serif;
   margin: 0 auto;
   max-width: 800px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .App h1{
@@ -13,8 +13,7 @@
   padding: 10px;
 }
 
-.App p{
-  /* align-items: center; */
+.loading,.error{
   display: flex;
   justify-content: center;
 }
@@ -76,7 +75,8 @@
   border: 2px solid black;
   border-radius: 25px;
   background-color: gainsboro;
-  padding: 20px;
+  margin-bottom: 20px;
+  /* padding: 10px; */
 }
 
 .grid-info {
@@ -87,10 +87,18 @@
   border: none !important;
 }
 
-.location-info p,
-h2,
-button {
+.location-info p{
   margin-left: 20px;
+}
+
+.heading{
+  /* margin-bottom: 5px; */
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aqua; */
+  border-bottom: 1px solid black;
 }
 
 .location-info button {
