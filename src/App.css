@@ -19,10 +19,11 @@
 }
 
 .postal-code-form {
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   margin-bottom: 20px;
-  justify-content: center;
+  /* justify-content: center; */
+  /* flex-direction: column; */
 }
 
 .postal-code-form input {
@@ -30,18 +31,31 @@
   height: 20px;
   padding: 10px;
   border-radius: 5px;
+  border: 2px solid black;
   display: flex;
   justify-content: center;
 }
+
+.input-field{
+  display: flex;
+  justify-content: center;
+  border: 1px;
+}
+
+.error{
+  color:  red;
+}
+
+
 
 .postal-code-form input :only-child{
   display: flex;
   justify-content: center;
 }
 
-.postal-code-form,input:hover{
+/* .postal-code-form,input:hover{
   transform: scale(1.1);
-}
+} */
 
 .postal-code-form button {
   width: 100px;
@@ -56,11 +70,7 @@
 
 .postal-code-form button:hover{
   color: black;
-  transform: scale(1.2);
-}
-
-.postal-code-form input {
-  margin-left: 2px;
+  transform: scale(1.1);
 }
 
 .label{
@@ -68,7 +78,7 @@
 }
 
 .loading {
-  color: red;
+  color: black;
 }
 
 .location-info {

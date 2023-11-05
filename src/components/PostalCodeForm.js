@@ -12,15 +12,16 @@ function PostalCodeForm(props) {
 
     const handleClear = () => {
         setPostalCode("");
-        setError(null)
+        setError(null);
     };
 
     const handleChange = (event) => {
-        if(event.target.value){
-            setError(null)
-        }
+        props.clearError();
+        // if (event.target.value) {
+        //     setError(null)
+        // }
         if (event.target.value.length > 6) {
-            setError("Please enter a valid 6-digit postal code.");
+            setError("Please Enter A Valid 6-digit Postal Code");
             setPostalCode(event.target.value);
         } else {
             setPostalCode(event.target.value);
@@ -29,18 +30,24 @@ function PostalCodeForm(props) {
     };
     return (
         <form className="postal-code-form" onSubmit={handleSubmit}>
-            {/* <label htmlFor="postal-code" className="label"><h2>Enter a Postal Code:</h2></label>       */}
-            <input
-                id="postal-code"
-                placeholder="Enter a Postal Code"
-                type="text"
-                value={postalCode}
-                onChange={handleChange}
-            />
-            <br></br>
-            {error && <p className="error">{error}</p>}
-            <button type="submit">Search</button>
-            <button onClick={handleClear}>Clear</button>
+            {/* <label htmlFor="postal-code" className="label"><h2>Enter a Postal Code:</h2></label>  */}
+            <div className="input-field">
+                <input
+                    className={error === null ? "" : "error"}
+                    id="postal-code"
+                    placeholder="Enter a Postal Code"
+                    type="text"
+                    value={postalCode}
+                    onChange={handleChange}
+                />
+            {/* </div>
+            <div> */}
+                <button type="submit">Search</button>
+                <button onClick={handleClear}>Clear</button>
+            </div>
+            <div className="abc">
+                {error && <p className="error">{error}</p>}
+            </div>
         </form>
     );
 }
